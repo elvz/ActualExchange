@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Курс Обміну Місцевої Валюти</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./select.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1>Обмін Актуальних Валют</h1>
+      <div class="row">
+        <div class="col s12">
+          <h5>В мене є:</h5>
+          <div class="input-field">
+            <select v-model="convertFrom">
+              <option v-for="(item, index) in goodsFrom" v-bind:value="item.name">{{item.desc}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col s12">
+          <h5>В кількості:</h5>
+          <input type="number" min="0" v-model.number="quantity" placeholder="Введіть Кількість" />
+        </div>
+        <div class="col s12">
+          <h5>Мені потрібно:</h5>
+          <div class="input-field">
+            <select v-model="convertTo">
+              <option v-for="(item, index) in goodsFrom" v-bind:value="item.name">{{item.desc}}</option>
+            </select>
+          </div>
+          <h5>Я отримаю: {{convertTo}} - {{resultQuantity}}</h5>
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
